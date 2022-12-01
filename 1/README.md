@@ -36,3 +36,4 @@ Tips til software:
 * Leaflet og Proj4Leaflet (https://kartena.github.io/Proj4Leaflet/)
 * Mapbox.js (https://docs.mapbox.com/mapbox-gl-js/api/map/)
 * OpenLayers (http://openlayers.org/)
+* FME Desktop (gratis lisens for hjemmebruk: https://www.safe.com/free-fme-licenses/home-use/)
