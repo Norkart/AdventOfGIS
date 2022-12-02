@@ -31,9 +31,10 @@ Datasett:
 * Land areas: https://www.naturalearthdata.com/downloads/10m-physical-vectors/
 * Labels: https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-physical-labels/
 
+**Legg inn svar som comments her**: https://gist.github.com/alexanno/f7a0ade80c352c14f6e4d3467d53c70a
+
 Tips til software:
 * QGIS Desktop (https://qgis.org/)
 * Leaflet og Proj4Leaflet (https://kartena.github.io/Proj4Leaflet/)
 * Mapbox.js (https://docs.mapbox.com/mapbox-gl-js/api/map/)
 * OpenLayers (http://openlayers.org/)
-* FME Desktop (gratis lisens for hjemmebruk: https://www.safe.com/free-fme-licenses/home-use/)
