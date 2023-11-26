@@ -34,11 +34,3 @@ Hver dag pushes en ny mappe med dagens oppgave.
 * [22. desember](./22/)
 * [23. desember](./23/)
 * [24. desember](./24/)
-
-## Legg inn svaret ditt som comment på gist'en til dagens oppgave!
-
-Du kan finne alle svar-gist'ene her:
-[https://gist.github.com/](https://gist.github.com/search?q=user%3Aalexanno+filename%3A.Advent-of-GIS_-_Svar_)
-
-
-~~For ansatte i Norkart sender du inn løsningen din på yammer-tråden.~~
