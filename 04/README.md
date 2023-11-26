@@ -5,13 +5,12 @@ Bakgrunnskart er sentralt i et webkart. Veldig ofte bruker man en webtjeneste fo
 
 Nyttige linker:
 * [Vector vs raster tiles - MapTiler](https://documentation.maptiler.com/hc/en-us/articles/4411234458385-Raster-vs-Vector-Map-Tiles-What-Is-the-Difference-Between-the-Two-Data-Types)
+* [100-metersbelte - GeoNorge](https://kartkatalog.geonorge.no/metadata/statlige-planretningslinjer-for-differensiert-forvaltning-av-strandsonen-langs-sjoeen-wms/14db463f-50cc-4531-8c00-8d48a9f00643)
 
 Oppgaven i dag:
 ---------------
-Nissen trenger et bakgrunnskart og foretrekker Norkart sine Webatlas-tiles i Leaflet for sin SleighPad
-1. Skaff deg en gratis nøkkel på https://developer.norkart.no/
-1. Lag en Leaflet-app og bruk [L.TileLayer.Webatlas](https://github.com/Norkart/L.TileLayer.Webatlas/) for å legge til bakgrunnskart
-1. Legg til noen åpne karttjenester fra "scratch". Fks Stamen sine:
+Nissen trenger et bakgrunnskart i Leaflet for sin SleighPad
+1. Legg til noen åpne XYZ-karttjenester fra "scratch". Fks Stamen sine:
 ```
 https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png
 
@@ -20,7 +19,6 @@ https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg
 https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg
 ``` 
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/348eae709843cdcdf42f93d21ea91b2c
 
 Tips til software:
 * https://leafletjs.com/

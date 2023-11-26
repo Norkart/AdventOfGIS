@@ -18,4 +18,3 @@ Hjelp nissen å få raskt nærhetssøk med KNN:
     1. Bruk order by <-> og limit
 1. Sjekk Explain Analyze på de ulike
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/dc6e306bef856d3b60eca0a59378c29e

@@ -18,7 +18,7 @@ Hjelp nissen med å dempe bekymringene rundt brannrisiko på sin ferd! Lag SQL-s
 1. Hvilke land har færre branner enn gjennomsnittet globalt?
 1. (ekstraoppgave) prøv ut cluster-funksjoner og lag clustere av branner. Lag polygoner av clusterne du får. (https://postgis.net/docs/ST_ClusterDBSCAN.html)
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/ff3d336aa5a80bfcce1a4bf48866009e
+
 
 Tips til software:
 * https://www.crunchydata.com/developers/tutorials

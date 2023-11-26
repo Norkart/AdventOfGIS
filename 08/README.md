@@ -7,7 +7,7 @@ Hjelp julenissen med å vise GPS-posisjonen sin i sanntid
 1. Lag funksjonalitet som henter enhetens GPS-posisjon og viser i kartet
 1. Tegn en linje som tracker hvor han har kjørt basert på GPS-trackingen
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/4aaf3f1636708a5cf4688cb4e275b7b7
+
 
 Tips til software:
 * https://leafletjs.com/plugins.html

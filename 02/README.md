@@ -22,7 +22,7 @@ Datasett:
 * [GeoNorge DTM10](https://kartkatalog.geonorge.no/metadata/dtm-10-terrengmodell-utm33/dddbb667-1303-4ac5-8640-7ec04c0e3918)
 * https://e-torg.no/ for detaljerte 3D-modeller for proffbrukere 
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/7f54752a6bf126144534d1af77bb131f
+
 
 Tips til software:
 * QGIS Desktop (https://qgis.org/)

@@ -18,4 +18,3 @@ Få en mer optimal og raskere database så nissen kan klare seg med unødvendige
 1. Prøv operatoren &&, ST_Intersects og ST_Dwithin med og uten indekser
 1. Prøv noen av spørringene tidligere i adventskalenderen. Kjør "Explain Analyze" i PgAdmin. Prøv å unngå sequential scans. Hva kan du gjøre?
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/3a488a71328d8f7734b2cdd94101eaac

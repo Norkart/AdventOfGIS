@@ -19,7 +19,7 @@ Lag et mer sledevennlig kart til SleighPaden
 Datasett:
 * [populated_places_4326.geojson](./populated_places_4326.geojson)
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/b4a5233d38cd75bb7ab785749a6abd95
+
 
 Tips til software:
 * https://leafletjs.com/plugins.html#clusteringdecluttering

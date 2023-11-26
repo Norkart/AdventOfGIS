@@ -27,7 +27,7 @@ Datasett:
 * [populated_places.geojson](./populated_places.geojson)
 * [countries](./countries.geojson)
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/d6002deca4bb5e7237ba7bcb62da0271
+
 
 Tips til software:
 * ogr2ogr som du har i OSGEO4Win Shell (https://gdal.org/programs/ogr2ogr.html)

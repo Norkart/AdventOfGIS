@@ -12,7 +12,7 @@ Julenissen følger selvfølgelig alle [ISO/TC20-standardene](https://www.iso.org
 1. Finn alle [gaver_urban_areas](../11/gaver_urban_areas.geojson) som er innenfor 3141.5 meter av alle luftfartshinder (hint: `st_buffer, st_dwithin, st_transform, 32633`)
 1. Lag et nytt VIEW som ikke inkluderer gaver_urban_areas som er høyrisiko for nissen.
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/4931f3e24de156518d013816f00c4bef
+
 
 Tips til software:
 * Gavedatasett [gaver_urban_areas.geojson](../11/gaver_urban_areas.geojson)

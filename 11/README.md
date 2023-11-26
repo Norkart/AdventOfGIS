@@ -24,7 +24,7 @@ Nissen vil ha oversikt over alle 593900 pipene i en database sammen med de urban
 1. Ta en kikk på de ulike tabellene og kolonnene. Hvordan ser geometrien ut i klartekst? 
 1. Test ut kartvisning i PgAdmin på noen spørringer.
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/c374e994b34a73ab6f25c7e38f79ade8
+
 
 Tips til software:
 * QGIS Desktop (https://qgis.org/)

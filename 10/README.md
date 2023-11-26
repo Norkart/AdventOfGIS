@@ -11,7 +11,7 @@ Oppgaven i dag:
 Nissen vil pimpe SleighPad-kartet med Vector Tiles og du er sjefspimperen!
 1. Lag et webkart (Leaflet, MapLibre, Mapbox, OpenLayers) som bruker vector tiles fra en freemium-tjeneste (Mapbox, Maptiler e.l.)
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/dbbc38ae2b2e925b5266573fa64dd25c
+
 
 Tips til software:
 * https://docs.maptiler.com/leaflet/vector-tiles-in-leaflet-js/

@@ -14,7 +14,7 @@ Nissen trenger stats for å planlegge effektivt! Bruk databasen fra tidligere i 
 1. Hvilket land har minst areal (hint: `sort by`)?
 1. Hvor stor tetthet er av piper pr land og pr urban area?
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/e0465c8e03183012f17e40abe58346fd
+
 
 Tips til software:
 * https://www.crunchydata.com/developers/tutorials

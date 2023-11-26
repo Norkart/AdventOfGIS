@@ -15,15 +15,13 @@ Hjelp julenissen med sin 100-meters-fobi.
 
 Datasett:
 ```
-BaseURL: https://waapi.webatlas.no/wms-temadata/?apitoken=3a12c9b2-18cc-4423-8913-486319e5a459
+BaseURL: https://openwms.statkart.no/skwms1/wms.spr_strandsoner?
 
-Layer: layergroup_14
+Layer: spr_strandsoner_wms
 ```
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/9285672f25a7cc30591ba14426ce95ab
+
 
 Tips til software:
 * https://codepen.io/alexanno/pen/ZEGWaZp
-* https://datavarehuskatalogentest.azurewebsites.net/#/datasets/14
-* https://datavarehus.norkart.no/
-* https://developer.norkart.no/
+* https://qgis.org/

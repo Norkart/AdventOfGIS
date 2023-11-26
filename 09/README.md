@@ -10,7 +10,7 @@ Gi Julenissen litt gamification-fix
 Datasett:
 * [gaver_land.geojson](./gaver_land.geojson)
 
-**Legg inn svar som comments her**: https://gist.github.com/alexanno/8e527ef0880def754289650634681d5f
+
 
 Tips til software
 * https://leafletjs.com/reference.html#event-objects
