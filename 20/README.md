@@ -1,4 +1,4 @@
-# 19. Desember
+# 20. Desember
 Det er lett å bli fanget inn i SQL'ens gleder og frustrasjon! SQL gir glede i seg selv, men lite nytteverdi alene. SleighPaden må få nytte av all den deilige PostGIS-julemagien! Heldigvis har nissens alver rigget opp et SQL-API som du kan bruke frem til desember for å få GeoJSON som resultater fra en PostGIS-SQL direkte i Leaflet. Databasen er fylt opp med to tabeller:
 
 ```
