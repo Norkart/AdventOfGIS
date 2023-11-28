@@ -20,8 +20,10 @@ Nyttige linker med mer om projeksjoner:
 Oppgaven i dag:
 ---------------
 Julenissen er desorientert og savner et kart med Nordpolen i sentrum. 
-1. Hvilken projeksjon egner seg? 
-1. Lag et kart hvor julenissen kan kjenne igjen verden fra sitt perspektiv (nordpolen).
+1. Lag et standard webkart i [https://leafletjs.com/](Leaflet.js) - prøv å finn Nordpolen
+1. Hvilken projeksjon egner seg for julenissen? 
+1. Lag et kart i QGIS hvor julenissen kan kjenne igjen verden fra sitt perspektiv (nordpolen)
+1. Kjør opp julefarger på tastaturet - i morgen blir det mer koding!  
 
 ![](./kart_nordpolen.png)
 

@@ -1,23 +1,29 @@
 # 12. Desember
-Nå har du på plass analyseriggen din for Julenissen! Klar for litt romlige analyser! Nissen vil, som alle andre, ha en analytisk tilnærming til sin reise i verden. Rudolf blir fort sliten og lei hvis ikke det er lagt en god plan og godt beslutningsgrunnlag for gaveutdelingsrekkefølgen. Dette løser PostGIS-spørringer lett som en lek! 
+Wow! Julenissen har ikke antiskrens på sleden. Han trenger å finne ut hvor det er sinnsyke skrenter. Så vil han gjerne ha et oversikts-terrengkart som viser terrenget på en enkel måte. 
 
-Nyttige linker:
-* https://postgis.net/workshops/postgis-intro/introduction.html
+GIS er ikke bare GeoJSON-filer og LatLng. Vi skiller mellom _raster_ og _vektor_ som to store datatyper. Rasterdata er grid-data; ofte bilder, høydedata, satellittdata. Enkelt forklart er det celler i en matrise hvor hver celle har en verdi. Vektordata er matematisk definerte geometrier som består av punkt, linje, flate. Det finnes tusenvis av algoritmer for å behandle rasterdata og gjøre avanserte analyser. Ofte blir dette brukt i terrenganalyser og på satellittdata / Earth Observation. 
+
+Nyttige linker med mer om raster og vektordata:
+* https://gisgeography.com/spatial-data-types-vector-raster/
+* https://docs.qgis.org/3.22/en/docs/gentle_gis_introduction/index.html
 
 
 Oppgaven i dag:
 ---------------
-Nissen trenger stats for å planlegge effektivt! Bruk databasen fra tidligere i adventen. Lag SQL-spørringer som finner svarene på:
-1. Hvor mange piper er det egentlig i `gaver_urban_areas.geojson`
-1. Hvor mange piper (punkt) er det innenfor Frankrike (polygon)? (hint `join where st_intersects group by`)
-1. Hva er arealet til Frankrike i kvadratkilometer (hint: `st_area, st_transform`)?
-1. Hvilket land har minst areal (hint: `sort by`)?
-1. Hvor stor tetthet er av piper pr land og pr urban area?
+Julenissen trenger karthjelp til sledekjøring 
+1. Lag et hillshade-kart over et valgfritt område du vil Julenissen skal besøke
+1. Lag et slope-kart som viser skrenter så ikke sleden havner i uføre
+
+![](./hillshade.png)
+![](./slope.png)
+
+Datasett:
+* Digital terrengmodell DTM50 som GeoTIFF: [6400_50m_33.tif](./6400_50m_33.tif)
+* [GeoNorge DTM10](https://kartkatalog.geonorge.no/metadata/dtm-10-terrengmodell-utm33/dddbb667-1303-4ac5-8640-7ec04c0e3918)
+* https://e-torg.no/ for detaljerte 3D-modeller for proffbrukere 
 
 
 
 Tips til software:
-* https://www.crunchydata.com/developers/tutorials
-* https://postgis.net/workshops/postgis-intro/
-* https://postgis.net/docs/manual-3.3/
-* https://postgis.net/docs/manual-3.3/reference.html
+* QGIS Desktop (https://qgis.org/)
+* GDAL (installeres med QGIS i 'osgeo4w shell') https://gdal.org/programs/gdaldem.html

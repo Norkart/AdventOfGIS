@@ -1,37 +1,24 @@
 # 3. Desember
-Endelig! Julenissen er klar for å planlegge sin døgnturné for å besøke alle snille GIS-utviklere i verden. Programmet er stramt og han må prioritere de mest befolkede stedene først. Derfor trenger han et kart over alle verdens land og de mest befolkede stedene. 
+Julenissen er klar for mer planlegging. Rudolf maser skrekkelig om matpauser og sleden trenger landingsplasser. Hovedveier bør unngåes. Skog er litt masete å lande i. Men kartet på SleighPaden viser jo ikke noe av dette!! Går det an å laste inn alle kartdata som GeoJSON-vektordata? Det blir jo for mye data!! SleighPaden krasjer. 
 
-YES! Datasettene er i GeoJSON! Og vi skal lage webkart i Leaflet! WOW SHIT! Noen har køddet det til med GeoJSON-filen med befolkede steder.. Den er i Web Mercator. Krise!!1
-
----
-
-GeoJSON er en måte å beskrive geografisk data i vanlig JSON, men som følger en standard for geografiske data. GeoJSON er enkelt å utvikle mot siden det er vanlig JSON og har bred støtte og massevis av verktøy i ulike språk. Det er JSON, så du får ikke indekser, binæroptimalisering eller noe annet snacks. 
-
-Som du allerede har lest deg opp på, så skiller vi mellom punkt, linje, flate/polygon i GIS-verden. En "rad/objekt" med geometri omtales som en "feature". Geometrien i en GeoJSON er som regel beskrevet i WGS84/LatLng. Hver feature kan ha attributter/egenskaper knyttet til seg - akkurat som en normal "tabell". 
+Bakgrunnskart er sentralt i et webkart. Veldig ofte bruker man en webtjeneste for å legge til et bakgrunnskart. Vanlige webtjenester er såkalte "tilecacher" på XYZ-standard. Dette er ferdig-rendret småbilder som er delt opp etter et fast mønster og dekker hele projeksjonen. Mest vanlig er projeksjonen Web Mercator. Bildeflisene (Tiles) deles opp pr zoom-nivå og deles i fire for neste zoom-nivå. Dette betyr at det blir milliarder av små bildefiler for å lage et kart på mange zoom-nivå. Et alternativ til statiske bildefiler er vektor-tiles - og da svært ofte på MVT-format/standard. Vektor-tiles er samme prinsippet som bilde-tiles, men det er generalisert vektordata som sendes til webklienten. Dermed er det klienten sitt ansvar å rendre vektor-tilene til faktiske kartbilder. 
 
 Nyttige linker:
-* https://geojson.org/
-* https://geojson.io/
-* https://en.wikipedia.org/wiki/GeoJSON
-
+* [Vector vs raster tiles - MapTiler](https://documentation.maptiler.com/hc/en-us/articles/4411234458385-Raster-vs-Vector-Map-Tiles-What-Is-the-Difference-Between-the-Two-Data-Types)
 
 Oppgaven i dag:
 ---------------
-Julenissen skal lage seg et webkart for å ha med i SleighPaden
-1. Transformer GeoJSON-filene til WGS84-latlng
-1. Lag et webkart i Leaflet som viser alle land-polygoner fra GeoJSON-filen. I tillegg skal kartet vise alle befolkede steder som punkter. 
-1. Lag forskjellige farger på punktene basert på befolkningsmengden(nissen liker å skille mellom: rød, grønn, hvit)
-1. Legg på labels på punktene som viser befolkningsmengden
+Nissen trenger et bakgrunnskart i Leaflet for sin SleighPad
+1. Legg til noen åpne XYZ-karttjenester fra "scratch". Fks Stamen sine:
+```
+https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png
 
-Datasett:
-* [populated_places.geojson](./populated_places.geojson)
-* [countries](./countries.geojson)
+https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg
 
+https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg
+``` 
 
 
 Tips til software:
-* ogr2ogr som du har i OSGEO4Win Shell (https://gdal.org/programs/ogr2ogr.html)
-* QGIS Desktop
-* [FME](mailto://sigbjorn.tillerli.herstad@norkart.no)
 * https://leafletjs.com/
-* https://github.com/proj4js/proj4js
+* https://codepen.io/alexanno/pen/EzrjEb

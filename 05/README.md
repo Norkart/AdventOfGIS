@@ -1,27 +1,26 @@
 # 5. Desember
-Det ble skikkelig mye punkter på SleigPaden! Det er lite trafikk i skyen på julaften - men Julenissen trenger bedre oversikt. 
+Julenissen er ikke like rettferdig som du skulle tro. Alt innenfor 100-metersbelte hater han som en innbarket byggesaksbehandler. Dessverre. Derfor trenger han å vite hvor 100-metersbelte i Norge faktisk går. [Kystlinjen er jo større enn nissens skjegglengde](https://ung.forskning.no/geofag-havet/hvordan-kan-norge-ha-en-av-verdens-lengste-kystlinjer/2193126). Vi trenger WMS!
 
-Heldigvis har kartografien løsninger! Mange punkter i et kart er bare forvirrende. Dot-maps, clustring, heatmaps er vanlige teknikker som gjør visualiseringen bedre. Leaflet har enkel støtte for alle ved bruk av styling eller plugins. 
+WMS er en OGC-standard som definerer et slags "Web-API for kart". Standarden er god og gammel. Du spør om et kartutsnitt på ett eller flere layers. Du får tilbake et ferdig rendret bilde som kan vises direkte på toppen av bakgrunnskartet ditt - eller som selve bakgrunnskartet. WMS er veldig fleksibelt og rendrer (ofte) on-the-fly direkte fra kartdata.
 
 Nyttige linker:
-* https://en.wikipedia.org/wiki/Dot_distribution_map
-* https://leafletjs.com/plugins.html#clusteringdecluttering
-* https://leafletjs.com/plugins.html#heatmaps
-* http://cartonerd.blogspot.com/2015/02/when-is-heat-map-not-heat-map.html
+* https://en.wikipedia.org/wiki/Web_Map_Service
+* https://leafletjs.com/examples/wms/wms.html
+* [100-metersbelte - GeoNorge](https://kartkatalog.geonorge.no/metadata/statlige-planretningslinjer-for-differensiert-forvaltning-av-strandsonen-langs-sjoeen-wms/14db463f-50cc-4531-8c00-8d48a9f00643)
 
 Oppgaven i dag:
 ---------------
-Lag et mer sledevennlig kart til SleighPaden 
-1. Lag et dot-map over populated places
-1. Lag et layer med clustring ved å bruke en plugin
-1. Lag et heatmap over populated places ved å bruke en plugin
+Hjelp julenissen med sin 100-meters-fobi. 
+1. Legg til 100-metersbelte som WMS-lag på toppen av kartet til SleigMap. Test ut de ulike parameterne på WMS-laget.
+1. Finn andre relevante WMS-tema og legg til. Kan du kombinere ulike layers?
 
 Datasett:
-* [populated_places_4326.geojson](./populated_places_4326.geojson)
+```
+BaseURL: https://openwms.statkart.no/skwms1/wms.spr_strandsoner?
 
-
+Layer: spr_strandsoner_wms
+```
 
 Tips til software:
-* https://leafletjs.com/plugins.html#clusteringdecluttering
-* https://leafletjs.com/plugins.html#heatmaps
-* https://leafletjs.com/reference.html#path-option
+* https://codepen.io/alexanno/pen/ZEGWaZp
+* https://qgis.org/ 

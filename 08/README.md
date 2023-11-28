@@ -1,14 +1,16 @@
 # 8. Desember
-Ruten er planlagt. Lengden er klar. Nissen tar en prøvetur i sleden og fyker avgårde. Gløggen nytes underveis, skjegget blir mer og mer tipsy. Men whaat???!! Hvor er han? Han har kjørt seg bort. Kartet viser jo ikke hvor han er!! Skikkelig bummer. Han er nødt til å få vite hvor han er og hvor han egentlig har kjørt sleden sin. Lost in cloud! 
+Pfuh. Julenissen kom seg tilbake. Roer litt ned på Gløggen neste sledetur tenker jeg. Han fikk heldigvis litt tid til å teste kartappen underveis. Gavestedene er jo ikke der! Og han må jo kunne klikke på punktene og få digital skryt når han har besøkt de!
 
 Oppgaven i dag:
 ---------------
-Hjelp julenissen med å vise GPS-posisjonen sin i sanntid
-1. Lag funksjonalitet som henter enhetens GPS-posisjon og viser i kartet
-1. Tegn en linje som tracker hvor han har kjørt basert på GPS-trackingen
+Gi Julenissen litt gamification-fix
+1. Last inn gavesteder i kartet og lag en nedtelling for han. Når han trykker på et gavested i kartet endrer nedtellingstallet seg med -1. Gir du han en digital-premie når han kommer til 0??
+1. Ekstra-oppgave: Det er syykt mye steder å besøke. Kan du lage bedre visualisering og brukeropplevelse for nissen?
+
+Datasett:
+* [gaver_land.geojson](./gaver_land.geojson)
 
 
-
-Tips til software:
-* https://leafletjs.com/plugins.html
-* https://github.com/Norkart/wa.js-introkurs/blob/NTNU-Geomatikk----app-/kode/js/main.js
+Tips til software
+* https://leafletjs.com/reference.html#event-objects
+* https://leafletjs.com/reference.html#geojson-oneachfeature
