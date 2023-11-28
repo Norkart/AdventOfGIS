@@ -5,7 +5,7 @@ Det er lett å bli fanget inn i SQL'ens gleder og frustrasjon! SQL gir glede i s
 | gaver_urban_areas          	| countries            	|
 |----------------------------	|----------------------	|
 | id (int)                   	| id (int)             	|
-| wkb_geometry (point, 4326) 	| geom (polygon, 4326) 	|
+| geom (point, 4326)         	| geom (polygon, 4326) 	|
 |                            	| name (varchar)       	|
 ```
 
