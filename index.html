@@ -69,14 +69,14 @@ body, html {height: 100%}
 (function() {
     let y = new Date().getFullYear();
     let m = new Date().getMonth();
-    var d = new Date().getDate();
-    d = String(d).padStart(2, '0');
+    let d = new Date().getDate();
+    let ds = String(d).padStart(2, '0');
     var txt = "Første luke åpnes 1. desember";
     if(m != 12 || d > 24) {
         return;
     }
-    let link = '<a href="https://github.com/Norkart/AdventOfGIS/tree/'+y+'/'+d+'">'
-    document.getElementById("luke").innerHTML = link + "Luke " + d + " er åpnet!</a>";
+    let link = '<a href="https://github.com/Norkart/AdventOfGIS/tree/'+y+'/'+ds+'">'
+    document.getElementById("luke").innerHTML = link + "Luke " + ds + " er åpnet!</a>";
 })()
 </script>
 
