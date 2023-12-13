@@ -1,19 +1,39 @@
 # 18. Desember
-## CHANGE!! PMTiles Maplibre
+Det er lett å bli fanget inn i SQL'ens gleder og frustrasjon! SQL gir glede i seg selv, men lite nytteverdi alene. SleighPaden må få nytte av all den deilige PostGIS-julemagien! Heldigvis har nissens alver rigget opp et SQL-API som du kan bruke frem til desember for å få GeoJSON som resultater fra en PostGIS-SQL direkte i Leaflet. Databasen er fylt opp med to tabeller:
 
-SleighPadden begynner å bli riktig så fresh! Rudolf er fornøyd og klar til avspark. Men der kom 3D-ønskene inn 🌍 Plutselig har Julenissen sett en demo av et snasent 3D-kart på web. Han vil ha det! Nå! Vi må lage en MVP! Eller en POC!
+```
+| gaver_urban_areas          	| countries            	|
+|----------------------------	|----------------------	|
+| id (int)                   	| id (int)             	|
+| geom (point, 4326)         	| geom (polygon, 4326) 	|
+|                            	| name (varchar)       	|
+```
 
-Alle har alltid lyst på et kart som er i 3D, eller "tilted 2D". Det har en kulhet over seg, ser avansert ut - [men gir ofte veldig liten direkte nytteverdi sammenlignet med helt vanlig 2D-kart](https://thematicmapping.org/downloads/Using_KML_for_Thematic_Mapping.pdf). Men det finnes gode verktøy for å teste litt - og det skal du gjøre for å stagge nissens sug etter 3D-kart! 
+API'et finner du her
+```
+Syntax: https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi?code={APIKEY}&sql={SQL-SELECT}
 
-PMTiles er kanonkul filstandard for vector tiles (MVT) levert direkte fra fil til frontend. Dette skjer ved at filen er strukturert for å hentes med HTTP Range Request. Altså kan kartet (websiden) hente __deler__ av filen __uten__ å laste hele filen. Med smart geografisk indeksering funker dette __serverless__ og lynraskt. 
+Eksempel: https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi?code=mQALCq1cmHPgUiPesWtwQIp82VbuF2KpGRWk0lX1guGTAzFuPevqzg==&sql=SELECT * FROM gaver_urban_areas LIMIT 10
 
-MapLibre er et kartbibliotek i Javascript - litt som Leaflet - men litt mer avansert - og lagd for vector-tiles og rendring i browseren. Litt som Mapbox - men Open Source 🥳
+URL Encoded: https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi?code=mQALCq1cmHPgUiPesWtwQIp82VbuF2KpGRWk0lX1guGTAzFuPevqzg==&sql=SELECT%20*%20FROM%20gaver_urban_areas%20LIMIT%2010
+
+Response:
+HTTP 200: GeoJSON
+HTTP 500: alt annet - ingen feilmelding
+```
+
 
 Nyttige linker:
-* https://maplibre.org/maplibre-gl-js-docs/example/add-3d-model/
+* https://leafletjs.com/reference.html#geojson
+* https://rapidapi.com/guides/fetch-api-async-await
+* https://postgis.net/workshops/postgis-intro/knn.html
+* https://colorbrewer2.org/
 
 Oppgaven i dag:
 ---------------
-Lag noen kule visualiseringer / demoer på analysene i tidligere luker ved å bruke PMTiles og MapLibre
-1. Last inn XXXXX som PMTiles herfra: YYYYY
-1. Sleng på terrain-tiles som background og endre på pitchen til cirka 42+42 (Du kan laste ned 142gb eller få deg en gratis nøkkel på [raster-dem hos Maptiler](https://cloud.maptiler.com/tiles/terrain-rgb-v2/))
+Hjelp nissen å utnytte PostGIS direkte på SleighPadden
+1. Når nissen klikker på kartet - spør du databasen: "Er det et land som ble klikket på?"
+1. Hva er gavetettheten på landet?
+1. Fargelegg landet basert på gavetettheten - bruk kartografisk fargeskala fra fks ColorBrewer
+
+<sub>(NB! Alvene blir blinkende i rødt og grønt hvis du prøver deg på noe ufin SQL 😡 Alle julegaver og ønskelister du og din familie kommer med vil umiddelbart brenne opp på veien til Nordpolen hvis du prøver deg!)</sub>

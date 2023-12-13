@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link href="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@3.3.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/underscore@1.13.1/underscore-min.js"></script>
+    <script src="https://unpkg.com/flatgeobuf@3.26.2/dist/flatgeobuf-geojson.min.js"></script>
+    <script src="https://unpkg.com/json-formatter-js"></script>
+
+    <style>
+ul.primary-navigation {
+  list-style-type: none;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+ul.primary-navigation li {
+    display: inline-block;
+    color: white;
+    font-family: Arial;
+}
+
+ul.primary-navigation li a {
+    color: white;
+}
+
+ul.primary-navigation li.active {
+  background-color: #4CAF50;
+}
+
+.primary-navigation a, .primary-navigation li.active {
+    padding: 8px;
+    display: inline-block;
+}
+
+ul.secondary-navigation {
+  list-style-type: none;
+  background-color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+ul.secondary-navigation li {
+    display: inline-block;
+    color: white;
+    font-family: Arial;
+}
+
+ul.secondary-navigation li.active {
+  background-color: #4CAF50;
+}
+
+ul.secondary-navigation li a {
+    color: white;
+}
+
+.secondary-navigation a, .secondary-navigation li.active {
+    padding: 8px;
+    display: inline-block;
+}
+
+.ol-popup { position: absolute; background-color: white; box-shadow: 0 1px 4px rgba(0,0,0,0.2); padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 280px;
+}
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+.ol-popup-closer:after {
+    content: "✖";
+}
+
+        #map { height: 480px; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        // basic MapLibre map
+        const map = new maplibregl.Map({
+            container: "map",
+            style: "https://demotiles.maplibre.org/style.json",
+            center: [8.00903, 58.18167],
+            zoom: 13,
+            maxZoom: 18,
+            minZoom: 8,
+        });
+
+        // optionally show some meta-data about the FGB file
+        function handleHeaderMeta(headerMeta) {
+            const header = document.getElementById("header")
+            const formatter = new JSONFormatter(headerMeta, 10)
+            header.appendChild(formatter.render())
+        }
+
+        // convert the rect into the format flatgeobuf expects
+        function fgBoundingBox() {
+            const { lng, lat } = map.getCenter();
+            const { _sw, _ne } = map.getBounds();
+            const size = Math.min(_ne.lng-lng, _ne.lat-lat) * 0.8;
+            return { minX: lng-size, minY: lat-size, maxX: lng+size, maxY: lat+size };
+        }
+
+        function getRect() {
+            const bbox = fgBoundingBox();
+            const coords = [[
+                [bbox.minX, bbox.minY],
+                [bbox.maxX, bbox.minY],
+                [bbox.maxX, bbox.maxY],
+                [bbox.minX, bbox.maxY],
+                [bbox.minX, bbox.minY],
+            ]];
+            return {
+                type: "FeatureCollection",
+                features: [{
+                    type: "Feature",
+                    geometry: { type: "Polygon", coordinates: coords }
+                }]
+            }
+        }
+
+        async function updateResults() {
+            let i = 0;
+            const fc = {type: "FeatureCollection", features: []};
+            // THIS IS WHERE THE MAGIC HAPPENS
+            let iter = flatgeobuf.deserialize("https://adventofgis-data.ams3.digitaloceanspaces.com/n50_samferdsel_senterlinje.fgb", fgBoundingBox(), handleHeaderMeta);
+            for await (let feature of iter) {
+                fc.features.push({...feature, id: i});
+                i += 1;
+            }
+            map.getSource("blocks").setData(fc);
+        }
+
+        map.on("load", () => {
+            map.addSource("blocks", {
+                type: "geojson",
+                data: {type: "FeatureCollection", features: []},
+            });
+            const pop = ["to-number", ["get", "population"], 0];
+            const color = [
+                "case",
+                [">", pop, 750], "#800026",
+                [">", pop, 500], "#BD0026",
+                [">", pop, 250], "#E31A1C",
+                [">", pop, 100], "#FC4E2A",
+                [">", pop, 50], "#FD8D3C",
+                [">", pop, 25], "#FEB24C",
+                [">", pop, 10], "#FED976",
+                "#FF0000",
+            ];
+            
+            map.addLayer({
+                id: "blocks-line",
+                type: "line",
+                source: "blocks",
+                paint: {
+                    "line-color": color,
+                    "line-opacity": 0.8,
+                    "line-width": 2,
+                },
+            });
+
+            map.addSource("rectangle", {
+                type: "geojson",
+                data: {type: "FeatureCollection", features: []},
+            });
+            map.addLayer({
+                id: "rectangle",
+                type: "line",
+                source: "rectangle",
+                paint: {
+                    "line-color": "#0000FF",
+                    "line-opacity": 0.9,
+                    "line-width": 3,
+                },
+            });
+
+            // from https://docs.mapbox.com/mapbox-gl-js/example/popup-on-click/
+            map.on("click", "blocks-line", (e) => {
+                const props = e.features[0].properties;
+                console.log(props);
+                const html = `${props.typeveg}: datafangstdato: ${props.datafangstdato}`;
+                new maplibregl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setHTML(html)
+                    .addTo(map);
+            });
+
+            // if the user is panning around alot, only update once per second max
+            updateResults = _.throttle(updateResults, 1000);
+
+            // show a rectangle corresponding to our bounding box
+            map.getSource("rectangle").setData(getRect());
+
+            // show results based on the initial map
+            updateResults();
+
+            // ...and update the results whenever the map moves
+            map.on("moveend", function(s){
+                map.getSource("rectangle").setData(getRect());
+                updateResults();
+            });
+        });
+    });
+    </script>
+    <p>
+        code borrowed from https://flatgeobuf.org/examples/leaflet/large.html
+    </p>
+    <div id="header">
+        <h3>Parsed header content</h3>
+    </div>
+</body>
+</html>
