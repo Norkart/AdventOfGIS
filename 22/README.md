@@ -8,6 +8,12 @@ https://adventofgis-data.ams3.digitaloceanspaces.com/SnowClass_GL_01km_30.0arcse
 Eksempel på visning i Leaflet med GeoRaster-layer
 https://geotiff.github.io/georaster-layer-for-leaflet-example/examples/load-cog-via-url-param.html?url=https://adventofgis-data.ams3.digitaloceanspaces.com/SnowClass_GL_01km_30.0arcsec_2021_v01.0.cog.nocomp.tif
 
+Eksempel med flyfoto over et område med mye piper i Kristiansand: Takk til GeoVekst!
+https://adventofgis-data.ams3.digitaloceanspaces.com/Agder_og_Telemark_2021_cog_jpeg.tif
+
+og
+https://geotiff.github.io/georaster-layer-for-leaflet-example/examples/load-cog-via-url-param.html?url=https://adventofgis-data.ams3.digitaloceanspaces.com/Agder_og_Telemark_2021_cog_jpeg.tif
+
 ```
 
 Nyttige linker:
