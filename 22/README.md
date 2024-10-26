@@ -1,4 +1,4 @@
-# 22. Desember
+# 22. Desember - COG, snøkart
 Nå nærmer det seg med stormskritt! Julen er rett rundt hjørnet og snøen laver ned. Noen steder. Men hvor? Hvor er det tundra som nissefar kan lande trygt på? Heldigvis observerer satellittene oss hele tiden. Deriblant [NSIDC](https://nsidc.org/home) som samler sammen hvor det er snø og is. Satellittdata er nesten alltid distribuert som rasterdata - fks GeoTIFF. Og det blir fort store datamengder - typisk noen gigabyte per "bilde"/raster. Så hvordan få dette ut på webappen din til SleighPadden? Det er to ulike strategier: 1) Ha en middleware som fks GeoServer som klipper opp rasterbildet og leverer mindre og mer håndterbare tiles/bilder til webappen 2) Bruke Cloud Optimized GeoTIFF (COG) som er en ultrasmart måte å strukturere en vanlig GeoTIFF sammen med å utnytte HTTP Range-spørringer. Dette skal du teste nå for nissen. 
 
 ```

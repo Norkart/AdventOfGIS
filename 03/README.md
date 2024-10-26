@@ -1,4 +1,4 @@
-# 3. Desember
+# 3. Desember - Tiles
 Julenissen er klar for mer planlegging. Rudolf maser skrekkelig om matpauser og sleden trenger landingsplasser. Hovedveier bør unngåes. Skog er litt masete å lande i. Men kartet på SleighPaden viser jo ikke noe av dette!! Går det an å laste inn alle kartdata som GeoJSON-vektordata? Det blir jo for mye data!! SleighPaden krasjer. 
 
 Bakgrunnskart er sentralt i et webkart. Veldig ofte bruker man en webtjeneste for å legge til et bakgrunnskart. Vanlige webtjenester er såkalte "tilecacher" på XYZ-standard. Dette er ferdig-rendret småbilder som er delt opp etter et fast mønster og dekker hele projeksjonen. Mest vanlig er projeksjonen Web Mercator. Bildeflisene (Tiles) deles opp pr zoom-nivå og deles i fire for neste zoom-nivå. Dette betyr at det blir milliarder av små bildefiler for å lage et kart på mange zoom-nivå. Et alternativ til statiske bildefiler er vektor-tiles - og da svært ofte på MVT-format/standard. Vektor-tiles er samme prinsippet som bilde-tiles, men det er generalisert vektordata som sendes til webklienten. Dermed er det klienten sitt ansvar å rendre vektor-tilene til faktiske kartbilder. 

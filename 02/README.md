@@ -1,4 +1,4 @@
-# 2. Desember
+# 2. Desember - GeoJSON
 Endelig! Julenissen er klar for å planlegge sin døgnturné for å besøke alle snille GIS-utviklere i verden. Programmet er stramt og han må prioritere de mest befolkede stedene først. Derfor trenger han et kart over alle verdens land og de mest befolkede stedene. 
 
 YES! Datasettene er i GeoJSON! Og vi skal lage webkart i Leaflet! WOW SHIT! Noen har køddet det til med GeoJSON-filen med befolkede steder.. Den er i Web Mercator. Krise!!1

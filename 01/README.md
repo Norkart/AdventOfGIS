@@ -1,4 +1,4 @@
-# 1. Desember
+# 1. Desember - Projeksjoner
 Nissen planlegger sin reise til alle snille utviklere på julaften. Han drar opp Kommunekart og søker opp Nordpolen. Til sin forskrekkelse får han NULL treff. Han prøver sin favorittkoordinat 90N, 45E uten hell. Hvor havner han? Er alt han har trodd på hele livet en løgn? Hvorfor sier Mercator at hjemmet hans er uendelig? 
 
 Julenissen har truffet på et klassisk GIS-problem: Projeksjoner. Verden er dessverre ikke flat - men rund. Skjermen og de fleste websider er flate. Derfor må vi projisere fra en kule til en 2D-flate. De fleste webkart bruker "Web Mercator" som har EPSG-koden 3857. "GPS-koordinater" er sfæriske/kulekoordinater og har grader fra Nord (N) og Øst (E). Som ekte GIS-utvikler kjenner du alltid til: 

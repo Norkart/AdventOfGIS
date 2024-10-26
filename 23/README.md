@@ -1,4 +1,4 @@
-# 23. Desember
+# 23. Desember - COG, rastervisualisering
 Der er vi! Men brukervennligheten trenger update! Snøen og Tundraen må fremheves! Havet er jo helt uinteressant! Bruk snø-rasteret fra gårsdagen - men gjør litt mer fancy fargelegging!
 
 ```

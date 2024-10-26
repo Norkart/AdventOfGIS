@@ -1,4 +1,4 @@
-# 11. Desember
+# 11. Desember - ST SQL, intersect, area
 Nå har du på plass analyseriggen din for Julenissen! Klar for litt romlige analyser! Nissen vil, som alle andre, ha en analytisk tilnærming til sin reise i verden. Rudolf blir fort sliten og lei hvis ikke det er lagt en god plan og godt beslutningsgrunnlag for gaveutdelingsrekkefølgen. Dette løser PostGIS-spørringer lett som en lek! 
 
 Nyttige linker:

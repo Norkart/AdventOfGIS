@@ -1,4 +1,4 @@
-# 21. Desember
+# 21. Desember - Solposisjon
 Wow! Det er skrekkelig mørkt for tida!!??? 🌛 Heldigvis er det [vintersolverv](https://www.timeanddate.no/astronomi/vintersolverv) i dag! Nissen gleder seg over lysere tider. Men hvor står egentlig solen? Soloppgang, soltimer, twilight-moments varierer fra sted til sted og dato til dato. Dette er avanserte greier og nissen trenger hjelp! 
 
 Selvfølgelig finnes det et Javascript-bibliotek som regner ut alt dette! [Suncalc.js](https://github.com/mourner/suncalc) er et slikt bibliotek. Under er eksempler på bruken av dette biblioteket.

@@ -1,4 +1,4 @@
-# 16. Desember
+# 16. Desember - PostGIS, KNN
 Hva er de nærmeste gavestedene? Hvor langt unna er de 100 nærmeste droppstedene? Nissen trenger funksjonalitet i SleigPaden som sorterer ut mens han flyr avgårde!
 
 Spatial analyse er kraftig på nærhetsanalyser. Vanlige operasjoner er "buffer-analyser" som legger en geografisk "buffer" rundt geometrien - for eksempel 200 meter - for deretter sjekke hva som er innenfor/utenfor (intersection). I PostGIS er relevante funksjoner innenfor "Spatial Relationships": ST_Dwithin, ST_Intersects, ST_Intersection m.fl. 

@@ -1,4 +1,4 @@
-# 8. Desember
+# 8. Desember - Popups
 Pfuh. Julenissen kom seg tilbake. Roer litt ned på Gløggen neste sledetur tenker jeg. Han fikk heldigvis litt tid til å teste kartappen underveis. Gavestedene er jo ikke der! Og han må jo kunne klikke på punktene og få digital skryt når han har besøkt de!
 
 Oppgaven i dag:

@@ -1,4 +1,4 @@
-# 7. Desember
+# 7. Desember - GPS-posisjon
 Ruten er planlagt. Lengden er klar. Nissen tar en prøvetur i sleden og fyker avgårde. Gløggen nytes underveis, skjegget blir mer og mer tipsy. Men whaat???!! Hvor er han? Han har kjørt seg bort. Kartet viser jo ikke hvor han er!! Skikkelig bummer. Han er nødt til å få vite hvor han er og hvor han egentlig har kjørt sleden sin. Lost in cloud! 
 
 Oppgaven i dag:

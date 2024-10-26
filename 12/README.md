@@ -1,4 +1,4 @@
-# 12. Desember
+# 12. Desember - 3D-Raster-analyse
 Wow! Julenissen har ikke antiskrens på sleden. Han trenger å finne ut hvor det er sinnsyke skrenter. Så vil han gjerne ha et oversikts-terrengkart som viser terrenget på en enkel måte. 
 
 GIS er ikke bare GeoJSON-filer og LatLng. Vi skiller mellom _raster_ og _vektor_ som to store datatyper. Rasterdata er grid-data; ofte bilder, høydedata, satellittdata. Enkelt forklart er det celler i en matrise hvor hver celle har en verdi. Vektordata er matematisk definerte geometrier som består av punkt, linje, flate. Det finnes tusenvis av algoritmer for å behandle rasterdata og gjøre avanserte analyser. Ofte blir dette brukt i terrenganalyser og på satellittdata / Earth Observation. 

@@ -1,4 +1,4 @@
-# 17. Desember
+# 17. Desember - ogr2ogr
 Alle disse analysene! Alle gavene! Rudolf er som alltid utålmodig. Når kommer resultatet til SleighPadden? Hvordan får vi de vakre SQL-resultatene ut i GeoJSON og vist på et webkart? 
 
 Det er mange måter å få transportert data fra PostGIS til webklienter på. Blant annet finnes det mange internasjonale åpne standarder - OGC-standarder. Det er to hovedstrategier å velge mellom: 1) Ferdig visualisert respons (fks WMS, tiles) 2) ren datarespons (OGC-API-Features, WFS, REST-API/GeoJSON)

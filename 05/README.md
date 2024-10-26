@@ -1,4 +1,4 @@
-# 5. Desember
+# 5. Desember - WMS
 Julenissen er ikke like rettferdig som du skulle tro. Alt innenfor 100-metersbelte hater han som en innbarket byggesaksbehandler. Dessverre. Derfor trenger han å vite hvor 100-metersbelte i Norge faktisk går. [Kystlinjen er jo større enn nissens skjegglengde](https://ung.forskning.no/geofag-havet/hvordan-kan-norge-ha-en-av-verdens-lengste-kystlinjer/2193126). Vi trenger WMS!
 
 WMS er en OGC-standard som definerer et slags "Web-API for kart". Standarden er god og gammel. Du spør om et kartutsnitt på ett eller flere layers. Du får tilbake et ferdig rendret bilde som kan vises direkte på toppen av bakgrunnskartet ditt - eller som selve bakgrunnskartet. WMS er veldig fleksibelt og rendrer (ofte) on-the-fly direkte fra kartdata.

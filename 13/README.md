@@ -1,4 +1,4 @@
-# 13. Desember
+# 13. Desember - Brannkart, PostGIS
 Det er [Luciadagen](https://no.wikipedia.org/wiki/Luciadagen) og Julenissen blir umiddelbart bekymret! Er det fare for skogbranner i desember? Må han ta med seg røykdykker-utstyr til Rudolf og resten av gjengen? Hvor brenner det egentlig i desember? 
 
 Heldigvis er nissen heldig! Satellittene til NASA og ESA svirrer rundt jorden og [noen av de](https://firms.modaps.eosdis.nasa.gov/) klarer å detektere skogbranner og brannlignende hendelser på bakken. Dagens oppgave har et lite uttrekk av brannhendelser over 7 dager [J1_VIIRS_C2_Global_7d.zip](./J1_VIIRS_C2_Global_7d.zip) som er en zippet shapefile. I tillegg er alle land med i [countries.geojson](./countries.geojson).

@@ -1,4 +1,4 @@
-# 14. Desember
+# 14. Desember - ST SQL, buffer, distance
 Flere bekymringer! Hvorfor kan ikke luftfarten være fri for hinder?? Julenissen har lite lyst til å krasje på selveste julaften. Og sant og si så kan det bli litt tåkete med mye gløgg i sleden. SleighPaden trenger luftfartshinder i seg for å unngå krasj - og for å droppe gaver til de barna som tenkte at de skulle lure selveste julenissen til å komme på besøk nærme et luftfartshinder. Nix! Denne nissen vet bedre!  
 
 Nyttige linker:

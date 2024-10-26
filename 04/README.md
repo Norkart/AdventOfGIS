@@ -1,4 +1,4 @@
-# 4. Desember
+# 4. Desember - Visualisering
 Det ble skikkelig mye punkter på SleigPaden! Det er lite trafikk i skyen på julaften - men Julenissen trenger bedre oversikt. 
 
 Heldigvis har kartografien løsninger! Mange punkter i et kart er bare forvirrende. Dot-maps, clustring, heatmaps er vanlige teknikker som gjør visualiseringen bedre. Leaflet har enkel støtte for alle ved bruk av styling eller plugins. 

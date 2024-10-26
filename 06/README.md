@@ -1,4 +1,4 @@
-# 6. Desember
+# 6. Desember - Digitalisering og tegning
 Endelig! Julenissen er klar til å lage seg en rute for den travle natten! Men pennen fungerer ikke i kartappen på SleigPaden.. Han vil tegne inn en rute og se avstander på ruten. Kan du hjelpe?
 
 Oppgaven i dag:

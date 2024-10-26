@@ -1,4 +1,4 @@
-# 9. Desember
+# 9. Desember - Vector tiles
 Julenissen har fått blod på tann og glitrer i skjegget. Kartet på SleighPaden er skikkelig nyttig. Men kan det pimpes litt? Han har hørt om vector-tiles - det skal være rimelig sexy greier <3 Kanskje kartet kan roteres og tippes? Dette MÅ testes ut! Blås i kostnader, blås i oppgradering av SleighPaden - kjør MVT MVP!
 
 Vector tiles er små data-fliser som er optimalisert for å rendres innenfor et gitt zoomnivå/utstrekning. Til forskjell fra raster-tiles/tilecacher, så må vector tiles rendres client-side. Altså må klienten vite om all styling/kartografi. Dette kan gi mer "smooth" opplevelse og mer dynamikk i kartografien. I tillegg så får klienten de faktiske vectordataene tilgjengelig som gjør det enklere med interaksjon på kartobjekter.
