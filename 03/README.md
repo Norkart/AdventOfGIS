@@ -11,14 +11,12 @@ Oppgaven i dag:
 Nissen trenger et bakgrunnskart i Leaflet for sin SleighPad
 1. Legg til noen åpne XYZ-karttjenester fra "scratch". Fks Stamen sine:
 ```
-https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png
+https://tile.openstreetmap.org/{z}/{x}/{y}.png
 
-https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg
+https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png
 
-https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg
+https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg
 ``` 
-
 
 Tips til software:
 * https://leafletjs.com/
-* https://codepen.io/alexanno/pen/EzrjEb

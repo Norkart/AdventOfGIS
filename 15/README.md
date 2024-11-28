@@ -8,7 +8,6 @@ Med geografiske data og "spatial", så er det mange veldig gode indeksmetoder fo
 Nyttige linker:
 * https://postgis.net/workshops/postgis-intro/indexing.html
 * https://postgis.net/docs/using_postgis_dbmanagement.html#build-indexes
-* 
 
 Oppgaven i dag:
 ---------------

@@ -20,7 +20,7 @@ Nyttige linker med mer om projeksjoner:
 Oppgaven i dag:
 ---------------
 Julenissen er desorientert og savner et kart med Nordpolen i sentrum. 
-1. Lag et standard webkart i [https://leafletjs.com/](Leaflet.js) - prøv å finn Nordpolen
+1. Prøv ut et standard webkart som [OpenStreetMap](https://www.openstreetmap.org/#map=0/-37.7/-71.7) - prøv å finn Nordpolen
 1. Hvilken projeksjon egner seg for julenissen? 
 1. Lag et kart i QGIS hvor julenissen kan kjenne igjen verden fra sitt perspektiv (nordpolen)
 1. Kjør opp julefarger på tastaturet - i morgen blir det mer koding!  
@@ -34,9 +34,9 @@ Datasett:
 * Labels: https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-physical-labels/
 
 
-
 Tips til software:
 * QGIS Desktop (https://qgis.org/)
+* https://docs.qgis.org/2.18/en/docs/user_manual/working_with_projections/working_with_projections.html
 * Leaflet og Proj4Leaflet (https://kartena.github.io/Proj4Leaflet/)
 * Mapbox.js (https://docs.mapbox.com/mapbox-gl-js/api/map/)
 * OpenLayers (http://openlayers.org/)
