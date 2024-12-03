@@ -22,5 +22,4 @@ Layer: spr_strandsoner_wms
 ```
 
 Tips til software:
-* https://codepen.io/alexanno/pen/ZEGWaZp
 * https://qgis.org/ 

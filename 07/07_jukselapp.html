@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Desember - Ruteplanlegging</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <style>
+        #map {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TogeoJSON/0.16.0/togeojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        // Initialiser kartet
+        var map = L.map('map').setView([58.1467, 7.9956], 13); // Kristiansand, Agder
+
+        // Legg til bakgrunnskart
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Legg til tegneverktøy
+        var drawnItems = new L.FeatureGroup();
+        map.addLayer(drawnItems);
+
+        var drawControl = new L.Control.Draw({
+            edit: {
+                featureGroup: drawnItems
+            },
+            draw: {
+                polyline: true,
+                polygon: false,
+                circle: false,
+                rectangle: false,
+                marker: false,
+                circlemarker: false
+            }
+        });
+        map.addControl(drawControl);
+
+        // Håndter tegnehendelser
+        map.on(L.Draw.Event.CREATED, function (e) {
+            var type = e.layerType,
+                layer = e.layer;
+
+            if (type === 'polyline') {
+                var latlngs = layer.getLatLngs();
+                var totalDistance = 0;
+                for (var i = 1; i < latlngs.length; i++) {
+                    totalDistance += latlngs[i - 1].distanceTo(latlngs[i]);
+                }
+                alert('Total lengde på ruten: ' + totalDistance.toFixed(2) + ' meter');
+            }
+
+            drawnItems.addLayer(layer);
+        });
+
+        // Funksjon for å eksportere til GPX
+        function exportToGPX() {
+            if (drawnItems.getLayers().length === 0) {
+                alert('Ingen rute å eksportere.');
+                return;
+            }
+
+            var geojson = drawnItems.toGeoJSON();
+            var gpx = togpx(geojson);
+            var blob = new Blob([gpx], { type: 'application/gpx+xml;charset=utf-8' });
+            saveAs(blob, 'route.gpx');
+        }
+
+        // Legg til eksportknapp
+        var exportButton = L.control({ position: 'topright' });
+        exportButton.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'leaflet-bar');
+            var button = L.DomUtil.create('a', '', div);
+            button.innerHTML = 'Eksporter til GPX';
+            button.href = '#';
+            button.title = 'Eksporter ruten til GPX';
+            L.DomEvent.on(button, 'click', function (e) {
+                L.DomEvent.stop(e);
+                exportToGPX();
+            });
+            return div;
+        };
+        exportButton.addTo(map);
+
+        // Funksjonalitet for GPS-posisjon
+        var gpsTrack = [];
+        var gpsLine = L.polyline(gpsTrack, { color: 'blue' }).addTo(map);
+
+        function updateGPSPosition(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            var latlng = [lat, lng];
+
+            // Oppdater GPS-spor
+            gpsTrack.push(latlng);
+            gpsLine.setLatLngs(gpsTrack);
+
+            // Flytt kartet for å følge posisjonen
+            map.setView(latlng, 15);
+        }
+
+        function showGPSError(error) {
+            alert('Kan ikke hente GPS-posisjon: ' + error.message);
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(updateGPSPosition, showGPSError, {
+                enableHighAccuracy: true
+            });
+        } else {
+            alert('Din enhet støtter ikke GPS.');
+        }
+    </script>
+</body>
+</html>
