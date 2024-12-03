@@ -1,4 +1,4 @@
-# Advent of GIS - 2023
+# Advent of GIS - 2024
 
 ![](./santa_dall_e.png)
 
