@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SleighPad GeoJSON API</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.2/chroma.min.js"></script>
+  <style>
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    const API_KEY = "mQALCq1cmHPgUiPesWtwQIp82VbuF2KpGRWk0lX1guGTAzFuPevqzg==";
+    const API_URL = "https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi";
+
+    const map = L.map('map').setView([20, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    let geojsonLayer;
+
+    map.on('click', async (e) => {
+      const lat = e.latlng.lat;
+      const lng = e.latlng.lng;
+      const countrySQL = `SELECT id, name, geom FROM countries WHERE ST_Contains(geom, ST_SetSRID(ST_Point(${lng}, ${lat}), 4326))`;
+
+      const countryData = await fetchGeoJSON(countrySQL);
+
+      if (countryData.features.length > 0) {
+        const country = countryData.features[0];
+        const countryName = country.properties.name;
+        const countryId = country.properties.id;
+
+        const giftDensitySQL = `SELECT COUNT(*) AS gift_count, ST_Area(geom::geography) AS area FROM gaver_urban_areas, countries WHERE countries.id = ${countryId} AND ST_Contains(countries.geom, gaver_urban_areas.geom)`;
+
+        const densityData = await fetchGeoJSON(giftDensitySQL);
+        const giftCount = densityData.features[0].properties.gift_count;
+        const area = densityData.features[0].properties.area; // Area in square meters
+        const density = giftCount / (area / 1000000); // Gifts per square km
+
+        updateMapWithDensity(country, density);
+      } else {
+        alert("No country found at the clicked location.");
+      }
+    });
+
+    async function fetchGeoJSON(sql) {
+      const url = `${API_URL}?code=${API_KEY}&sql=${encodeURIComponent(sql)}`;
+      const response = await fetch(url);
+
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error('Failed to fetch data:', response.statusText);
+        alert('An error occurred while fetching data.');
+        return { features: [] };
+      }
+    }
+
+    function updateMapWithDensity(country, density) {
+      if (geojsonLayer) {
+        map.removeLayer(geojsonLayer);
+      }
+
+      const colorScale = chroma.scale('YlOrRd').domain([0, 100]);
+      const fillColor = colorScale(Math.min(density, 100)).hex();
+
+      geojsonLayer = L.geoJSON(country, {
+        style: {
+          color: 'black',
+          weight: 1,
+          fillColor: fillColor,
+          fillOpacity: 0.7
+        }
+      }).addTo(map);
+
+      const countryName = country.properties.name;
+      geojsonLayer.bindPopup(`Country: ${countryName}<br>Gift Density: ${density.toFixed(2)} gifts/km²`).openPopup();
+    }
+  </script>
+</body>
+</html>

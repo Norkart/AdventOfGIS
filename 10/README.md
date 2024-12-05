@@ -25,7 +25,6 @@ Nissen vil ha oversikt over alle 593900 pipene i en database sammen med de urban
 1. Test ut kartvisning i PgAdmin på noen spørringer.
 
 
-
 Tips til software:
 * QGIS Desktop (https://qgis.org/)
 * ogr2ogr/GDAL https://gdal.org/drivers/vector/pg.html (installeres med QGIS i 'osgeo4w shell')

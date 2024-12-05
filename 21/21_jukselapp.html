@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solposisjon</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/suncalc/suncalc.js"></script>
+    <style>
+        #map {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        // Initialiser kartet
+        var map = L.map('map').setView([58.1467, 7.9956], 13); // Sentrer kartet på Kristiansand, Agder
+
+        // Legg til OpenStreetMap-fliser
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Funksjon for å vise solinformasjon
+        function showSunInfo(lat, lng) {
+            var times = SunCalc.getTimes(new Date(), lat, lng);
+
+            var sunrise = times.sunrise.toLocaleTimeString();
+            var sunset = times.sunset.toLocaleTimeString();
+            var nadir = times.nadir.toLocaleTimeString();
+
+            var popupContent = `
+                <b>Posisjon:</b> (${lat.toFixed(4)}, ${lng.toFixed(4)})<br>
+                <b>Soloppgang:</b> ${sunrise}<br>
+                <b>Solnedgang:</b> ${sunset}<br>
+                <b>Nadir:</b> ${nadir}
+            `;
+
+            L.popup()
+                .setLatLng([lat, lng])
+                .setContent(popupContent)
+                .openOn(map);
+        }
+
+        // Legg til klikkhåndtering på kartet
+        map.on('click', function (e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+            showSunInfo(lat, lng);
+        });
+
+        // Hent brukerens GPS-posisjon
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var userLat = position.coords.latitude;
+                var userLng = position.coords.longitude;
+
+                // Flytt kartet til brukerens posisjon
+                map.setView([userLat, userLng], 13);
+
+                // Legg til en markør for brukerens posisjon
+                var marker = L.marker([userLat, userLng]).addTo(map)
+                    .bindPopup('Du er her! Klikk på kartet for solinformasjon.')
+                    .openPopup();
+
+                // Vis solinformasjon for brukerens posisjon
+                showSunInfo(userLat, userLng);
+            }, function () {
+                alert('Kunne ikke hente GPS-posisjonen din.');
+            });
+        } else {
+            alert('Geolokasjon er ikke støttet av nettleseren din.');
+        }
+    </script>
+</body>
+</html>

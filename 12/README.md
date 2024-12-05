@@ -23,7 +23,8 @@ Datasett:
 * https://e-torg.no/ for detaljerte 3D-modeller for proffbrukere 
 
 
-
 Tips til software:
 * QGIS Desktop (https://qgis.org/)
 * GDAL (installeres med QGIS i 'osgeo4w shell') https://gdal.org/programs/gdaldem.html
+* [QGIS Terrain analysis](https://docs.qgis.org/3.34/en/docs/training_manual/rasters/terrain_analysis.html)
+* [QGIS-tutorials](https://www.youtube.com/watch?v=pOLOdbShNVA&list=PLp1lK6n-xb5Pqm6JmiwORjm8vuK5g2yf1)

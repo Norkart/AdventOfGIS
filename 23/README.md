@@ -26,7 +26,6 @@ Nyttige linker:
 * https://nsidc.org/data/nsidc-0768/versions/1
 * https://daacdata.apps.nsidc.org/pub/DATASETS/nsidc0768_global_seasonal_snow_classification_v01/
 * https://geotiff.github.io/georaster-layer-for-leaflet-example/examples/load-cog-via-url-param.html?url=https://adventofgis-data.ams3.digitaloceanspaces.com/SnowClass_GL_01km_30.0arcsec_2021_v01.0.cog.nocomp.tif 
-* https://codepen.io/alexanno/pen/VwBYraN 
 
 Oppgaven i dag:
 ---------------

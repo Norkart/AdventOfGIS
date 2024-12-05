@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julenissens Gavejakt</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <style>
+        #map {
+            height: 90vh;
+        }
+        #counter {
+            padding: 10px;
+            font-size: 1.2em;
+            background: white;
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+        #congrats {
+            display: none;
+            font-size: 1.5em;
+            color: green;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">Klikk på punktene for å besøke stedet. Gjenværende steder å besøke: <span id="remaining">0</span></div>
+    <div id="congrats">Gratulerer, Julenissen! Alle gavesteder er besøkt! 🎉</div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initial number of gift locations
+        let remainingLocations = 0;
+        
+        // Update the counter display
+        function updateCounter() {
+            document.getElementById('remaining').textContent = remainingLocations;
+            const congrats = document.getElementById('congrats');
+            if (remainingLocations === 0) {
+                congrats.style.display = 'block';
+            } else {
+                congrats.style.display = 'none';
+            }
+        }
+
+        // Initialize the map
+        const map = L.map('map').setView([0.0, 0.0], 5);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Load GeoJSON data (example URL, replace with actual data source)
+        const geojsonUrl = './gaver_land.geojson';
+
+        fetch(geojsonUrl)
+            .then(response => response.json())
+            .then(data => {
+                remainingLocations = data.features.length;
+                updateCounter();
+
+                // Add GeoJSON layer to the map
+                L.geoJSON(data, {
+                    onEachFeature: (feature, layer) => {
+                        layer.bindPopup(`Gavenr: ${feature.properties.id || 'Ukjent id'}`);
+                        layer.on('click', () => {
+                            if (!layer.options.visited) {
+                                remainingLocations = Math.max(remainingLocations - 1, 0);
+                                updateCounter();
+                                layer.options.visited = true;
+                                layer.setStyle({ color: 'gray' });
+                            }
+                        });
+                    },
+                    pointToLayer: (feature, latlng) => {
+                        return L.circleMarker(latlng, {
+                            radius: 8,
+                            fillColor: '#ff7800',
+                            color: '#000',
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        });
+                    }
+                }).addTo(map);
+            })
+            .catch(error => console.error('Error loading GeoJSON data:', error));
+    </script>
+</body>
+</html>

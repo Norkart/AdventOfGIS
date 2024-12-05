@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+    <style>
+      #map {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/proj4"></script>
+    <script src="https://unpkg.com/georaster"></script>
+    <script src="https://unpkg.com/georaster-layer-for-leaflet"></script>
+    <script>
+      // initalize leaflet map
+      var map = L.map('map').setView([58, 9], 4);
+      // add OpenStreetMap basemap
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      const url_to_geotiff_file = "https://adventofgis-data.ams3.digitaloceanspaces.com/SnowClass_GL_01km_30.0arcsec_2021_v01.0.cog.nocomp.tif";
+        console.log("url_to_geotiff_file:", url_to_geotiff_file);
+        parseGeoraster(url_to_geotiff_file).then(georaster => {
+          console.log("georaster:", georaster);
+
+          /*
+              GeoRasterLayer is an extension of GridLayer,
+              which means can use GridLayer options like opacity.
+
+              Just make sure to include the georaster option!
+
+              http://leafletjs.com/reference-1.2.0.html#gridlayer
+          */
+          /** WITH colormap for pixelvalues*/
+          var layer = new GeoRasterLayer({
+              attribution: "Unknown",
+              georaster,
+              opacity: 0.7,
+              pixelValuesToColorFn: function(pixelValues) {
+                var pixelValue = pixelValues[0]; // there's just one band in this raster
+                //console.log(pixelValue);
+                /**
+                1 = Tundra
+                2 = Boreal Forest
+                3 = Maritime
+                4 = Ephemeral (includes no snow)
+                5 = Prairie
+                6 = Montane Forest
+                7 = Ice (glaciers and ice sheets)
+                8 = Ocean
+                9 = Fill
+                */             
+                if (pixelValue === 1) return '#ff0000';
+                if (pixelValue === 2) return null;
+                if (pixelValue === 3) return null;
+                if (pixelValue === 4) return '#00ff00';
+                if (pixelValue === 5) return null;
+                if (pixelValue === 6) return null;
+                if (pixelValue === 7) return '#ff0000';                
+                if (pixelValue === 8) return null;
+                
+                return '#00ff00';
+                
+              },
+              resolution: 256
+          });
+          /*
+          var layer = new GeoRasterLayer({
+              attribution: "Unknown",
+              georaster,
+              opacity: 0.9,
+              resolution: 256
+          });
+          */
+          layer.addTo(map);
+
+          //map.fitBounds(layer.getBounds());
+
+        });
+ 
+      
+
+    </script>
+  </body>
+</html>
