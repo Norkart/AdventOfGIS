@@ -17,8 +17,7 @@
   <div id="map"></div>
 
   <script>
-    const API_KEY = "mQALCq1cmHPgUiPesWtwQIp82VbuF2KpGRWk0lX1guGTAzFuPevqzg==";
-    const API_URL = "https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi";
+    const API_URL = "https://sbmvbaxdiylrglcxgfws.supabase.co/functions/v1/geojson-sql-api";
 
     const map = L.map('map').setView([20, 0], 2);
 
@@ -39,8 +38,9 @@
         const country = countryData.features[0];
         const countryName = country.properties.name;
         const countryId = country.properties.id;
-
-        const giftDensitySQL = `SELECT COUNT(*) AS gift_count, ST_Area(geom::geography) AS area FROM gaver_urban_areas, countries WHERE countries.id = ${countryId} AND ST_Contains(countries.geom, gaver_urban_areas.geom)`;
+        
+        //mest sannsynlig feil i spørringen
+        const giftDensitySQL = `SELECT COUNT(*) AS gift_count, countries.geom AS geom, ST_Area(countries.geom::geography) AS area FROM gaver_urban_areas, countries WHERE countries.id = ${countryId} AND ST_Contains(countries.geom, gaver_urban_areas.geom) GROUP BY countries.geom`;
 
         const densityData = await fetchGeoJSON(giftDensitySQL);
         const giftCount = densityData.features[0].properties.gift_count;
@@ -54,7 +54,7 @@
     });
 
     async function fetchGeoJSON(sql) {
-      const url = `${API_URL}?code=${API_KEY}&sql=${encodeURIComponent(sql)}`;
+      const url = `${API_URL}?q=${encodeURIComponent(sql)}`;
       const response = await fetch(url);
 
       if (response.ok) {

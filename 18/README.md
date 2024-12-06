@@ -1,5 +1,5 @@
 # 18. Desember - SQL API
-Det er lett å bli fanget inn i SQL'ens gleder og frustrasjon! SQL gir glede i seg selv, men lite nytteverdi alene. SleighPaden må få nytte av all den deilige PostGIS-julemagien! Heldigvis har nissens alver rigget opp et SQL-API som du kan bruke frem til desember for å få GeoJSON som resultater fra en PostGIS-SQL direkte i Leaflet. Databasen er fylt opp med to tabeller:
+Det er lett å bli fanget inn i SQL'ens gleder og frustrasjon! SQL gir glede i seg selv, men lite nytteverdi alene. SleighPaden må få nytte av all den deilige PostGIS-julemagien! Heldigvis har nissens alver rigget opp et [GeoJSON SQL-API på Supabase](https://github.com/alexanno/supabase_geojson_sqlapi) som du kan bruke frem til nyttårsaften for å få GeoJSON som resultater fra en PostGIS-SQL direkte i Leaflet. Databasen er fylt opp med to tabeller:
 
 ```
 | gaver_urban_areas          	| countries            	|
@@ -11,15 +11,44 @@ Det er lett å bli fanget inn i SQL'ens gleder og frustrasjon! SQL gir glede i s
 
 API'et finner du her
 ```
-Syntax: https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi?code={APIKEY}&sql={SQL-SELECT}
+Syntax: https://sbmvbaxdiylrglcxgfws.supabase.co/functions/v1/geojson-sql-api?q={SQL-SELECT}
 
-Eksempel: https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi?code=mQALCq1cmHPgUiPesWtwQIp82VbuF2KpGRWk0lX1guGTAzFuPevqzg==&sql=SELECT * FROM gaver_urban_areas LIMIT 10
+Eksempel: https://sbmvbaxdiylrglcxgfws.supabase.co/functions/v1/geojson-sql-api?q=SELECT * FROM gaver_urban_areas LIMIT 1
+```
 
-URL Encoded: https://alenos-tester-sql-api.azurewebsites.net/api/sqlapi?code=mQALCq1cmHPgUiPesWtwQIp82VbuF2KpGRWk0lX1guGTAzFuPevqzg==&sql=SELECT%20*%20FROM%20gaver_urban_areas%20LIMIT%2010
-
-Response:
-HTTP 200: GeoJSON
-HTTP 500: alt annet - ingen feilmelding
+[Eksempelet](https://sbmvbaxdiylrglcxgfws.supabase.co/functions/v1/geojson-sql-api?q=SELECT%20*%20FROM%20gaver_urban_areas%20LIMIT%202) returnerer følgende GeoJSON:
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.672624564,
+          37.367764428
+        ]
+      },
+      "properties": {
+        "id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.682911133,
+          37.368253346
+        ]
+      },
+      "properties": {
+        "id": 1
+      }
+    }
+  ]
+}
 ```
 
 
